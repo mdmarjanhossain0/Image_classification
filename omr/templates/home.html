@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<style>
+  .container-output {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-output img {
+    max-width: 60%;
+  }
+</style>
+<main role="main">
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Automatic Trash classification</h1>
+            <p>Choose an image file for detecting class of trash</p>
+            <form action="/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" accept="image/*" name="image">
+                <br>
+                <br>
+                <button type="submit" type="button" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+      
+      
+      {% if output_class %}
+      <div class="container-output">
+        <h3>Class: {{ output_class }}</h3>
+        <img src="{{ image_url }}" alt="">
+      </div>
+      {% endif %}
+    </div> 
+
+</main>
+{% endblock %}
