@@ -4,13 +4,6 @@ from omr.models import ImageModel
 from omr.worker.worker import classify_image
 
 
-
-
-
-
-
-
-
 def home_view(request):
     context = {}
     if request.method == "POST":
@@ -27,17 +20,3 @@ def home_view(request):
         context["image_url"] = image.image.url
 
     return render(request, "home.html", context)
-
-
-def controll_view(request):
-    context = {}
-    if request.method == "POST":
-        print(request.POST)
-        if request.POST.get("start", None):
-            print("start")
-            context["status"] = "started"
-        else:
-            print("stop")
-            context["status"] = "stoped"
-
-    return render(request, "controller.html", context)
