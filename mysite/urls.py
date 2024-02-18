@@ -6,13 +6,13 @@ from django.conf import settings
 
 from omr.views import (
     home_view,
-    controll_view
+    # controll_view
 )
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home_view, name="home"),
-    path("controller", controll_view, name="controller"),
+    # path("controller", controll_view, name="controller"),
     # REST-framework
     path("ckeditor5/", include("django_ckeditor_5.urls")),
     path(
